@@ -1,5 +1,3 @@
-
-
 package mage.util;
 
 import java.io.InputStream;
@@ -57,14 +55,14 @@ public class FastByteArrayOutputStream extends OutputStream {
     }
 
     @Override
-    public final void write(byte b[]) {
+    public final void write(byte[] b) {
         verifyBufferSize(size + b.length);
         System.arraycopy(b, 0, buf, size, b.length);
         size += b.length;
     }
 
     @Override
-    public final void write(byte b[], int off, int len) {
+    public final void write(byte[] b, int off, int len) {
         verifyBufferSize(size + len);
         System.arraycopy(b, off, buf, size, len);
         size += len;
@@ -86,5 +84,4 @@ public class FastByteArrayOutputStream extends OutputStream {
     public InputStream getInputStream() {
         return new FastByteArrayInputStream(buf, size);
     }
-
 }
